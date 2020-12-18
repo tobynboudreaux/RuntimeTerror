@@ -21,9 +21,15 @@ Charles B, Daniel Reyes, Ruben Dominguez, Takia Ross, and Toby Boudreaux
 
 Run the following commands to get started
 
-npm install --save redux react-redux react-router-dom @types/redux @types/react-redux @types/react-router-dom
+`npm install --save redux react-redux react-router-dom @types/redux @types/react-redux @types/react-router-dom`
 
-npm run test
+Alternatively, use yarn:
+
+`yarn install`
+
+Then:
+
+`npm run test`
 
 Verify the test are passing and you are good to go!
 
