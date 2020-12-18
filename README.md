@@ -21,11 +21,7 @@ Charles B, Daniel Reyes, Ruben Dominguez, Takia Ross, and Toby Boudreaux
 
 Run the following commands to get started
 
-npm install --save redux @types/redux
-
-npm install --save react-redux @types/react-redux
-
-npm install --save react-router-dom @types/react-router-dom
+npm install --save redux react-redux react-router-dom @types/redux @types/react-redux @types/react-router-dom
 
 npm run test
 
