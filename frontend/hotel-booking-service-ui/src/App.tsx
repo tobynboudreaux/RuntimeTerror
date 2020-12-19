@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import EditUser from './users/EditUser';
 import EditListing from './listings/EditListing';
+import Homepage from './components/Homepage'
 import AuthRoutes from './routing/AuthRoutes';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
@@ -86,6 +87,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/signUp" component={SignUp} />
             <Route path="/addUser" component={AddUser} />
+            <Route exact path="/" component={Homepage}/>
 
             {/* If user is signed in */}
             <AuthRoutes />
