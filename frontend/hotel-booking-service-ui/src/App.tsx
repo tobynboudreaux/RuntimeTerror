@@ -6,6 +6,9 @@ import EditListing from './listings/EditListing';
 import AuthRoutes from './routing/AuthRoutes';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
+import Login from './login/Login';
+import SignUp from './login/SignUp';
+import AddUser from './users/AddUser';
 
 function App() {
   return (
@@ -67,10 +70,23 @@ function App() {
                 <li>
                   <Link to="/editListing">Edit Listing</Link>
                 </li>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/signUp">Sign Up/Register</Link>
+                </li>
+                <li>
+                  <Link to="/addUser">Add User</Link>
+                </li>
               </ul>
             </nav>
             <Route path="/editUser" component={EditUser} />
             <Route path="/editListing" component={EditListing} />
+            <Route path="/login" component={Login} />
+            <Route path="/signUp" component={SignUp} />
+            <Route path="/addUser" component={AddUser} />
+
             {/* If user is signed in */}
             <AuthRoutes />
           </span>
