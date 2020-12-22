@@ -2,19 +2,13 @@
 Revature 2011JavaReact Batch group for Project2
 Charles B, Daniel Reyes, Ruben Dominguez, Takia Ross, and Toby Boudreaux
 
-# Hotel Booking Service
+# HotelYeah!
 // Brief description of what this product aims to accomplish
+HotelYeah! is a hotel booking service that allows users to log-in, access their favorite hotels, book a new hotel, post new hotels, remove hotels that are no longer available, filter by category, location, and availability. 
 
-## Backend
-// Brief description of product
+This is a full-stack application built by Runtime Terror. The backend is built using Spring Boot (the repository can be found here: ), the frontend is built using React/Redux, and it will be hosted on an AWS cloud server using a PostgreSQL DB and a Jenkins CLI.
 
-// Installation Instructions 
-
-// Endpoints what it does/parameters/what it returns
-
-// Short Example/Tutorial
-
-## Frontend
+## Application
 // Brief description
 
 // Installation Instructions
