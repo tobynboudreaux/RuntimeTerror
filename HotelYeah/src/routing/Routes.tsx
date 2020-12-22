@@ -12,7 +12,7 @@ const Routes = () => {
     return (
         <div>
             <h1>Hello, I'm the Routes Component</h1>
-            <Route path="/home" component={Landing} />
+            <Route path="/" component={Landing} />
             <Route path="/login" component={Login} />
             <Route path="/signUp" component={SignUp} />
             <Route path="/users" component={UserContainer} />
