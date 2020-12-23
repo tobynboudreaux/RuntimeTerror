@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserCard = () => {
+const User = () => {
     return (
         <>
             <h1>User Card Component</h1>
@@ -8,4 +8,4 @@ const UserCard = () => {
     )
 }
 
-export default UserCard
+export default User

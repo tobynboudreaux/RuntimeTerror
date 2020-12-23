@@ -1,14 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
-import EditUser from './users/EditUser';
-import EditListing from './listings/EditListing';
 import AuthRoutes from './routing/AuthRoutes';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import './App.css';
-import Login from './login/Login';
-import SignUp from './login/SignUp';
-import AddUser from './users/AddUser';
+import Navbar from './layout/Navbar';
+import Routes from './routing/Routes';
 
 function App() {
   return (
@@ -59,34 +56,8 @@ function App() {
             </a>
 
             {/* Routing here for now */}
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Landing {/* Landing will go here */}</Link>
-                </li>
-                <li>
-                  <Link to="/editUser">Edit User</Link>
-                </li>
-                <li>
-                  <Link to="/editListing">Edit Listing</Link>
-                </li>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/signUp">Sign Up/Register</Link>
-                </li>
-                <li>
-                  <Link to="/addUser">Add User</Link>
-                </li>
-              </ul>
-            </nav>
-            <Route path="/editUser" component={EditUser} />
-            <Route path="/editListing" component={EditListing} />
-            <Route path="/login" component={Login} />
-            <Route path="/signUp" component={SignUp} />
-            <Route path="/addUser" component={AddUser} />
-
+            <Navbar />
+            <Routes />
             {/* If user is signed in */}
             <AuthRoutes />
           </span>
