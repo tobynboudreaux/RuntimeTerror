@@ -1,20 +1,29 @@
-import React from 'react'
+// import React from 'react'
 import axios from 'axios'
+import * as consts from './APIConstants'
+
+export const config = {
+    headers: {
+        Authorization: consts.HEADERS.get("Authorization"),
+    }
+}
 
 const API = () => {
     const url = "http://3.139.235.28:8080/hotelbooking-1.0.0/"
+    
     const getHotel = () => {
-        axios.get(`${url}hotel`);
+        return axios.get(`${url}hotel`, config);
     }
     const postHotel = (hotelObj: any) => {
-        axios.post(`${url}hotel`, hotelObj);
+        return axios.post(`${url}hotel`, hotelObj);
     }
     const editHotel = (id: any, hotelObj: any) => {
-        axios.put(`${url}hotel/${id}`, hotelObj);
+        return axios.put(`${url}hotel/${id}`, hotelObj);
     }
     const deleteHotel = (id: any) => {
-        axios.delete(`${url}hotel/${id}`);
+        return axios.delete(`${url}hotel/${id}`);
     }
+    return {getHotel, postHotel, editHotel, deleteHotel}
 }
 
 export default API

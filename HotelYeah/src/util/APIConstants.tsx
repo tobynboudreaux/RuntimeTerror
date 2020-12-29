@@ -4,4 +4,5 @@ export const BASE_URL = 'http://3.139.235.28:8080/hotelbooking-1.0.0';
 
 let headers = new Headers();
 headers.append('Authorization', 'Basic ' + btoa(USERNAME + ":" + PASSWORD));
+
 export const HEADERS = headers;
