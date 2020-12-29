@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: "Russo One", sans-serif;
+  /* font-family: "Russo One", sans-serif; */
   font-size: 1.6rem;
   line-height: 1.6;
   background-color: #fff;
@@ -260,22 +260,33 @@ button {
 .landing {
   position: relative;
   /* background: url("./img/bookshelf.jpg") no-repeat center center/cover; */
-  height: 100vh;
+  /* height: 100vh; */
+}
+
+#landing-container {
+  background: url("./img/hotels-illustrated.png") no-repeat center center/cover;
+  height: 80vh;
 }
 
 .landing-inner {
-  color: var(--accent-color);
+  color: var(--primary-color);
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: 3px solid var(--primary-color);
-  padding: 70px;
+  padding: 30px;
   margin: auto;
+  background-color:rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  text-align: center;
 }
 
-.landing h1 {
+h1.landing {
   text-align: center;
+  font-size: 66pt;
+  color: var(--primary-color);
+  text-shadow: 5px 5px #333;
 }
 
 .landing-links {

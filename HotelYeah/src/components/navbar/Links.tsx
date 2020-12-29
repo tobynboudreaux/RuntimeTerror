@@ -5,7 +5,7 @@ import { List, ListItem, ListItemText, makeStyles } from '@material-ui/core';
 const Links = () => {
 
     const navLinks = [
-        { title: `Landing`, path: `/home` },
+        { title: `Landing`, path: `/` },
         { title: `Login`, path: `/login` },
         { title: `Register`, path: `/signUp` },
         { title: `Users`, path: `/users` },
