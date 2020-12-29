@@ -259,7 +259,7 @@ button {
 /* Landing */
 .landing {
   position: relative;
-  background: url("./img/bookshelf.jpg") no-repeat center center/cover;
+  /* background: url("./img/bookshelf.jpg") no-repeat center center/cover; */
   height: 100vh;
 }
 
