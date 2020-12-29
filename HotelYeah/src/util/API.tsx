@@ -15,13 +15,13 @@ const API = () => {
         return axios.get(`${url}hotel`, config);
     }
     const postHotel = (hotelObj: any) => {
-        return axios.post(`${url}hotel`, hotelObj);
+        return axios.post(`${url}hotel`, hotelObj, config);
     }
     const editHotel = (id: any, hotelObj: any) => {
-        return axios.put(`${url}hotel/${id}`, hotelObj);
+        return axios.put(`${url}hotel/${id}`, hotelObj, config);
     }
     const deleteHotel = (id: any) => {
-        return axios.delete(`${url}hotel/${id}`);
+        return axios.delete(`${url}hotel/${id}`, config);
     }
     return {getHotel, postHotel, editHotel, deleteHotel}
 }
