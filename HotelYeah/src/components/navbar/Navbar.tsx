@@ -9,7 +9,7 @@ import NonAuthLinks from './NonAuthLinks'
 
 const Navbar = () => {
 
-    const [authorized, setAuthorized] = React.useState(true);
+    const [authorized] = React.useState(true);
 
     const useStyles = makeStyles({
         navbarDisplayFlex: {
