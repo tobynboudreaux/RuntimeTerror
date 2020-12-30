@@ -44,7 +44,4 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/react-native": "^0.63.43"
-  }
 }
