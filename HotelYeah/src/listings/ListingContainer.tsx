@@ -1,11 +1,11 @@
 import React from 'react'
-import Listing from './Listing'
+import ListingComponent from './ListingComponent'
 
 const ListingContainer = () => {
     return (
         <div>
             <h1>This is the ListingContainer component</h1>
-            <Listing />
+            <ListingComponent />
         </div>
     )
 }

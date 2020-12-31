@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Landing from '../layout/Landing'
-import Listing from '../listings/Listing'
+import ListingComponent from '../listings/ListingComponent'
 import ListingContainer from '../listings/ListingContainer'
 import Login from '../login/Login'
 import SignUp from '../login/SignUp'
@@ -20,7 +20,7 @@ const Routes = () => {
             <Route path="/user" component={User} />
             <Route path="/listings" component={ListingContainer} />
             {/* need to add id to param url */}
-            <Route path="/listing" component={Listing} />
+            <Route path="/listing" component={ListingComponent} />
         </>
     )
 }
