@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 import Links from './Links'
 import NonAuthLinks from './NonAuthLinks'
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -27,7 +28,9 @@ const Navbar = () => {
 
                 <Container className={classes.navbarDisplayFlex}>
                     <IconButton edge="start" color="inherit" aria-label="home">
-                        <Home fontSize="large" />
+                        <Link to="/">
+                            <Home fontSize="large" />
+                        </Link>
                     </IconButton>
                 </Container>
 
