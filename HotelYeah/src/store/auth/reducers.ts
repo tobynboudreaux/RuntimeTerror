@@ -3,7 +3,18 @@ import { AuthState, AuthActionTypes, UPDATE_SESSION } from './types'
 const initialState: AuthState = {
     loggedIn: false,
     session: "",
-    userName: ""
+    id: 0,
+    userName: "",
+    lastName: "",
+    address: "",
+    address2: "",
+    city: "",
+    state: "",
+    zipCode: 0,
+    country: "",
+    homePhoneNumber: "",
+    cellPhoneNumber: "",
+    emailAddress: ""
 }
 
 export function authReducer (
