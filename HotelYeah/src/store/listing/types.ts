@@ -2,10 +2,20 @@ export const CREATE_LISTING = "CREATE_LISTING";
 export const DELETE_LISTING = "DELETE_LISTING";
 
 export interface Listing {
-    name: string,
-    price: number,
-    rooms: number,
-    timestamp: number
+    id: number;
+    code: string;
+    name: string;
+    address: string;
+    address2: string;
+    city: string;
+    state: string;
+    zipCode: number;
+    mainPhoneNumber: string;
+    faxNumber: string;
+    emailAddress: string;
+    websiteAddress: string;
+    imagePath: string;
+    timestamp: number;
 }
 
 export interface ListingState {
