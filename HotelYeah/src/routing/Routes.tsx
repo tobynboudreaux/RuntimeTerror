@@ -10,9 +10,9 @@ import User from '../users/User'
 
 const Routes = () => {
     return (
-        <div>
-            <h1>Hello, I'm the Routes Component</h1>
-            <Route path="/" component={Landing} />
+        <>
+            {/* <h1>Hello, I'm the Routes Component</h1> */}
+            <Route exact path="/" component={Landing} />
             <Route path="/login" component={Login} />
             <Route path="/signUp" component={SignUp} />
             <Route path="/users" component={UserContainer} />
@@ -21,7 +21,7 @@ const Routes = () => {
             <Route path="/listings" component={ListingContainer} />
             {/* need to add id to param url */}
             <Route path="/listing" component={Listing} />
-        </div>
+        </>
     )
 }
 
