@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { List, ListItem, ListItemText, makeStyles } from '@material-ui/core';
 
-const Links = () => {
-
     const navLinks = [
         { title: `Landing`, path: `/` },
         { title: `Login`, path: `/login` },
@@ -13,6 +11,9 @@ const Links = () => {
         { title: `Listings`, path: `/listings` },
         { title: `Listing`, path: `/listing` },
     ]
+
+const Links = () => {
+
 
     const useStyles = makeStyles({
         navDisplayFlex: {
@@ -30,7 +31,6 @@ const Links = () => {
 
     return (
         <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex}>
-
             {navLinks.map(({ title, path }) => (
                 <Link to={path} key={title} className={classes.linkText}>
                     <ListItem button>

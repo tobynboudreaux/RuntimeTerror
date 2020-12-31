@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
-    const [authorized, setAuthorized] = React.useState(true);
+    const [authorized] = React.useState(true);
 
     const useStyles = makeStyles({
         navbarDisplayFlex: {
