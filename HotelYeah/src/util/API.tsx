@@ -9,7 +9,7 @@ export const config = {
 }
 
 const API = () => {
-    const url = "http://3.139.235.28:8080/hotelbooking-1.0.0/"
+    const url = consts.BASE_URL
     
     const getHotel = () => {
         return axios.get(`${url}hotel`, config);
