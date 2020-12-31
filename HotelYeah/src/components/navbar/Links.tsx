@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { List, ListItem, ListItemText, makeStyles } from '@material-ui/core';
 
-    const navLinks = [
+    export const navLinks = [
         { title: `Landing`, path: `/` },
         { title: `Login`, path: `/login` },
         { title: `Register`, path: `/signUp` },
