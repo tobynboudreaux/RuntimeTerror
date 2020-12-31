@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../util/API';
-import { Listing } from '../store/listing/types'
+import { Listing } from '../../store/listing/types'
 
 const ListingComponent = () => {
     const [listings, setListings] = useState([]);
