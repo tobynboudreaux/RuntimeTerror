@@ -1,44 +1,47 @@
-import React from "react";
-import { AppBar, Toolbar, IconButton, Container } from "@material-ui/core";
-import { Home } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react'
+import { AppBar, Toolbar, IconButton, Container } from '@material-ui/core';
+import { Home } from "@material-ui/icons"
+import { makeStyles } from "@material-ui/core/styles"
 
-import Links from "./Links";
-import NonAuthLinks from "./NonAuthLinks";
-import { Link } from "react-router-dom";
+import Links from './Links'
+import NonAuthLinks from './NonAuthLinks'
+
 
 const Navbar = () => {
-  const [authorized, setAuthorized] = React.useState(true);
 
-  const useStyles = makeStyles({
-    navbarDisplayFlex: {
-      display: `flex`,
-      justifyContent: `space-between`,
-    },
-  });
+    const [authorized, setAuthorized] = React.useState(true);
 
-  const classes = useStyles();
+    const useStyles = makeStyles({
+        navbarDisplayFlex: {
+            display: `flex`,
+            justifyContent: `space-between`
+        },
+    });
 
-  return (
-    <AppBar position="static">
-      <Toolbar>
-        <Container className={classes.navbarDisplayFlex}>
-          <IconButton edge="start" color="inherit" aria-label="home">
-            <Link to="/">
-              <Home fontSize="large" />
-            </Link>
-          </IconButton>
-        </Container>
+    const classes = useStyles();
 
-        <Container className={classes.navbarDisplayFlex}>
-          <Links />
-        </Container>
-        <Container className={classes.navbarDisplayFlex}>
-          {authorized === true ? <NonAuthLinks /> : ""}
-        </Container>
-      </Toolbar>
-    </AppBar>
-  );
-};
+    return (
 
-export default Navbar;
+        <AppBar position="static">
+            <Toolbar>
+
+                <Container className={classes.navbarDisplayFlex}>
+                    <IconButton edge="start" color="inherit" aria-label="home">
+                        <Home fontSize="large" />
+                    </IconButton>
+                </Container>
+
+                <Container className={classes.navbarDisplayFlex}>
+                    <Links />
+                </Container>
+                <Container className={classes.navbarDisplayFlex}>
+                    { authorized === true ? <NonAuthLinks /> : "" }
+                </Container>
+              
+            </Toolbar>
+        </AppBar>
+
+    )
+}
+
+export default Navbar
