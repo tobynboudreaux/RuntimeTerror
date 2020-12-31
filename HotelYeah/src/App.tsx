@@ -1,10 +1,10 @@
 import React from "react";
-import AuthRoutes from "./routing/AuthRoutes";
+import AuthRoutes from "./components/routing/AuthRoutes";
 import './App.css'
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from './components/footer/Footer'
-import Routes from "./routing/Routes";
+import Routes from "./components/routing/Routes";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
