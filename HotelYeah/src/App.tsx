@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthRoutes from "./components/routing/AuthRoutes";
 import './App.css'
 import { BrowserRouter as Router } from "react-router-dom";
@@ -14,6 +14,8 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
+
+  {/* Call useEffect to check if user is logged in and their role */}
   return (
     <Router>
       <ThemeProvider theme={theme}>
