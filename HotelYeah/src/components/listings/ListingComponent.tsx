@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../util/API';
+import ListingContainer from './ListingContainer';
 
 const ListingComponent = () => {
     const [listings, setListings] = useState([]);
@@ -11,10 +12,11 @@ const ListingComponent = () => {
     useEffect(() => {
         getListings();
     }, []);
+
     return (
-        <div>
-            <p>{listings.map((listing) => { return <p>{listing}</p>})}</p>
-        </div>
+        <>
+            <ListingContainer listings={listings} />
+        </>
     )
 }
 
