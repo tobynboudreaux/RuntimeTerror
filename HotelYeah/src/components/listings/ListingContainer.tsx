@@ -1,50 +1,39 @@
 import React from "react";
-import { Listing, ListingState } from "../../store/listing/types";
+import { ListingState } from "../../store/listing/types";
+import { DataGrid, ColDef } from '@material-ui/data-grid';
 
 const ListingContainer = ({ listings }: ListingState) => {
-  const insertData = (listing: Listing) => {
-    return (
-      <tr key={listing.id}>
-        <td>{listing.id}</td>
-        <td>{listing.code}</td>
-        <td>{listing.name}</td>
-        <td>{listing.address}</td>
-        <td>{listing.address2}</td>
-        <td>{listing.city}</td>
-        <td>{listing.state}</td>
-        <td>{listing.zipCode}</td>
-        <td>{listing.mainPhoneNumber}</td>
-        <td>{listing.faxNumber}</td>
-        <td>{listing.emailAddress}</td>
-        <td>{listing.websiteAddress}</td>
-        <td>{listing.imagePath}</td>
-      </tr>
-    );
-  };
+
+  const columns: ColDef[] = [
+    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'code', headerName: 'Code', width: 110 },
+    { field: 'name', headerName: 'Name', width: 130 },
+    { field: 'address', headerName: 'Address', width: 150 },
+    { field: 'address2', headerName: 'Alternate Address', width: 130 },
+    { field: 'city', headerName: 'City', width: 110 },
+    { field: 'state', headerName: 'State', width: 90 },
+    { field: 'zipCode', headerName: 'Zipcode', width: 110, },
+    { field: 'mainPhoneNumber', headerName: 'Phone', width: 120 },
+    { field: 'faxNumber', headerName: 'Fax number', width: 130 },
+    { field: 'emailAddress', headerName: 'Email address', width: 220 },
+    { field: 'websiteAddress', headerName: 'Website address', width: 160 },
+    { field: 'imagePath', headerName: 'Image URL', width: 170 },
+    
+    // {
+    //   field: 'fullName',
+    //   headerName: 'Full name',
+    //   description: 'This column has a value getter and is not sortable.',
+    //   sortable: false,
+    //   width: 160,
+    //   valueGetter: (params: ValueGetterParams) =>
+    //     `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
+    // },
+  ];
 
   return (
-    <div>
-      <h1>This is the ListingContainer component</h1>
-      <table className="listing-table">
-        <thead>
-          <tr>
-            <td>ID</td>
-            <td>Code</td>
-            <td>Name</td>
-            <td>Address</td>
-            <td>Address 2</td>
-            <td>City</td>
-            <td>State</td>
-            <td>Zipcode</td>
-            <td>Main Phone Number</td>
-            <td>Fax</td>
-            <td>Email</td>
-            <td>Website</td>
-            <td>Image Path</td>
-          </tr>
-        </thead>
-        <tbody>{listings.map((listing: Listing) => insertData(listing))}</tbody>
-      </table>
+    <div className="listing-table">
+      <h1 className="center">Hotel Listings</h1>
+      <DataGrid rows={listings} columns={columns} pageSize={10} checkboxSelection />
     </div>
   );
 };

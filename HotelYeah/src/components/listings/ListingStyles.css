@@ -13,4 +13,10 @@
 .listing-table {
   font-size: 12pt;
   padding: 15px;
+  min-height: 600px;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
 }
