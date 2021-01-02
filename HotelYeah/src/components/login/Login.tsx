@@ -1,4 +1,7 @@
-import React from 'react';
+// Dependencies
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
+// UI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,8 +15,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-import { config } from '../util/API'
+// Requests
+import API from '../util/API'
+// Redux
+import { updateSession } from '../../store/auth/actions'
 
 function Copyright() {
   return (
@@ -51,6 +56,51 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    password2: ""
+  })
+
+  const { email, password, password2 } = formData;
+
+  const onChange = (e: any) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    if (password !== password2) {
+      console.log("Passwords do not match.");
+    } else if(password.length < 6 || password2.length < 6) {
+      console.log("Password must be at least 5 characters long");
+    } else {
+      const userObj = {
+        "email": email,
+        "password": password
+      }
+      return API().login(userObj)
+      .then(resp => {
+        console.log(resp);
+        const session = {
+          loggedIn: true,
+          session: resp.data.token,
+          id: resp.data.id,
+          userName: resp.data.userName,
+          lastName: resp.data.lastName,
+          address: resp.data.address,
+          address2: resp.data.address2,
+          city: resp.data.city,
+          state: resp.data.state,
+          zipCode: resp.data.zipCode,
+          country: resp.data.country,
+          homePhoneNumber: resp.data.homePhoneNumber,
+          cellPhoneNumber: resp.data.cellPhoneNumber,
+          emailAddress: resp.data.emailAddress
+        }
+        updateSession(session);
+      })
+    }    
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -72,6 +122,7 @@ export default function Login() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(e: any) => onChange(e)}
           />
           <TextField
             variant="outlined"
@@ -83,6 +134,19 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={(e: any) => onChange(e)}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password2"
+            label="Confirm Password"
+            type="password"
+            id="password2"
+            autoComplete="current-password"
+            onChange={(e: any) => onChange(e)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -95,8 +159,7 @@ export default function Login() {
             color="primary"
             className={classes.submit}
             onClick={(e)=> {
-              e.preventDefault();
-              console.log(config)
+              onSubmit(e);
             }}
           >
             Sign In
@@ -108,7 +171,7 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signUp" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
