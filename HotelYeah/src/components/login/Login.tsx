@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+function Login() {
   const classes = useStyles();
 
   const [formData, setFormData] = useState({
@@ -82,19 +82,19 @@ export default function Login() {
         console.log(resp);
         const session = {
           loggedIn: true,
-          session: resp.data.token,
-          id: resp.data.id,
-          userName: resp.data.userName,
-          lastName: resp.data.lastName,
-          address: resp.data.address,
-          address2: resp.data.address2,
-          city: resp.data.city,
-          state: resp.data.state,
-          zipCode: resp.data.zipCode,
-          country: resp.data.country,
-          homePhoneNumber: resp.data.homePhoneNumber,
-          cellPhoneNumber: resp.data.cellPhoneNumber,
-          emailAddress: resp.data.emailAddress
+          session: "",
+          id: 1,
+          userName: "resp.data.userName",
+          lastName: "resp.data.lastName",
+          address: "resp.data.address",
+          address2: "resp.data.address2",
+          city: "resp.data.city",
+          state: "resp.data.state",
+          zipCode: 70374,
+          country: "resp.data.country",
+          homePhoneNumber: "resp.data.homePhoneNumber",
+          cellPhoneNumber: "resp.data.cellPhoneNumber",
+          emailAddress: "resp.data.emailAddress"
         }
         updateSession(session);
       })
@@ -184,3 +184,7 @@ export default function Login() {
     </Container>
   );
 }
+
+export default connect(state => ({
+  auth: state
+}))(Login)

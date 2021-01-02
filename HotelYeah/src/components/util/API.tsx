@@ -24,7 +24,7 @@ const API = () => {
         return axios.delete(`${url}hotel/${id}`, config);
     }
     const login = (userObj: any) => {
-        return axios.post(`${url}login`, userObj, config);
+        return axios.post(`${url}/login`, userObj, config);
     }
     return {getHotel, postHotel, editHotel, deleteHotel, login}
 }
