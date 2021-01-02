@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../util/API';
-import { Listing } from '../../store/listing/types'
+import ListingContainer from './ListingContainer';
 
 const ListingComponent = () => {
     const [listings, setListings] = useState([]);
@@ -12,10 +12,11 @@ const ListingComponent = () => {
     useEffect(() => {
         getListings();
     }, []);
+
     return (
-        <div>
-            <p>{listings.map((listing: Listing) => { return <p>{listing.code}</p>})}</p>
-        </div>
+        <>
+            <ListingContainer listings={listings} />
+        </>
     )
 }
 

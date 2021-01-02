@@ -1,0 +1,16 @@
+.add-listing-form {
+  padding: 10px;
+  margin: 10px;
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+}
+
+.MuiTextField-root {
+  padding: 10px;
+}
+
+.listing-table {
+  font-size: 12pt;
+  padding: 15px;
+}
