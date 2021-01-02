@@ -1,6 +1,5 @@
 // Dependencies
 import React, { useState } from 'react';
-import { connect } from 'react-redux'
 // UI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -17,8 +16,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 // Requests
 import API from '../util/API'
-// Redux
-import { updateSession } from '../../store/auth/actions'
 
 function Copyright() {
   return (
@@ -82,21 +79,19 @@ function Login() {
         console.log(resp);
         const session = {
           loggedIn: true,
-          session: "",
-          id: 1,
-          userName: "resp.data.userName",
-          lastName: "resp.data.lastName",
-          address: "resp.data.address",
-          address2: "resp.data.address2",
-          city: "resp.data.city",
-          state: "resp.data.state",
-          zipCode: 70374,
-          country: "resp.data.country",
-          homePhoneNumber: "resp.data.homePhoneNumber",
-          cellPhoneNumber: "resp.data.cellPhoneNumber",
-          emailAddress: "resp.data.emailAddress"
+          id: resp.data.id,
+          userName: resp.data.userName,
+          lastName: resp.data.lastName,
+          address: resp.data.address,
+          address2: resp.data.address2,
+          city: resp.data.city,
+          state: resp.data.state,
+          zipCode: resp.data.zipCode,
+          country: resp.data.country,
+          homePhoneNumber: resp.data.homePhoneNumber,
+          cellPhoneNumber: resp.data.cellPhoneNumber,
+          emailAddress: resp.data.emailAddress
         }
-        updateSession(session);
       })
     }    
   }
@@ -185,6 +180,4 @@ function Login() {
   );
 }
 
-export default connect(state => ({
-  auth: state
-}))(Login)
+export default Login
