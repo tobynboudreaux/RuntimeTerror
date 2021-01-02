@@ -20,3 +20,12 @@
 .center {
   text-align: center;
 }
+
+.buttons-below-table {
+  margin: 20px;
+  margin-top: 50px;
+}
+
+.buttons-below-table button {
+  margin-right: 20px;
+}
