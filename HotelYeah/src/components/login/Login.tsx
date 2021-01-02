@@ -74,7 +74,7 @@ function Login() {
         "email": email,
         "password": password
       }
-      return API().login(userObj)
+      return API().getGuest()
       .then(resp => {
         console.log(resp);
         const session = {

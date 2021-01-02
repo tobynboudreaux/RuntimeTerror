@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import API from '../util/API';
-import { Listing } from '../../store/listing/types'
 
 const ListingComponent = () => {
     const [listings, setListings] = useState([]);
@@ -14,7 +13,7 @@ const ListingComponent = () => {
     }, []);
     return (
         <div>
-            <p>{listings.map((listing: Listing) => { return <p>{listing.code}</p>})}</p>
+            <p>{listings.map((listing) => { return <p>{listing}</p>})}</p>
         </div>
     )
 }
