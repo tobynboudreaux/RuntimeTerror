@@ -1,0 +1,11 @@
+.landing-splash {
+  width: 60%;
+  text-align: center;
+  margin: 200px auto 0;
+  background: rgba(0,0,0,0.8);
+  color: var(--primary-color);
+  border: 4px solid var(--primary-color);
+  border-radius: 20px;
+  font-size: 22pt;
+  padding: 22px;
+}
