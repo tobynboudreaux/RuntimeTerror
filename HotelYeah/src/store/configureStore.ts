@@ -13,6 +13,4 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
-let currentState = store.getState();
-
 export default store;
