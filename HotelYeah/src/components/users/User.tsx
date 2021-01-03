@@ -1,10 +1,12 @@
 import React from 'react'
 import EditUser from './EditUser'
+import {UserState} from './types'
 
-const User = () => {
+const User = ({user}: UserState) => {
+    
     return (
         <div>
-            <h1>User Card Component</h1>
+            <h1>{user.firstName}</h1>
             <EditUser />
         </div>
     )
