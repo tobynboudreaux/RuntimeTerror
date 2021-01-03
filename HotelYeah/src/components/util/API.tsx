@@ -23,10 +23,19 @@ const API = () => {
     const deleteHotel = (id: any) => {
         return axios.delete(`${url}hotel/${id}`, config);
     }
-    const login = (userObj: any) => {
-        return axios.post(`${url}/login`, userObj, config);
+    const getGuest = () => {
+        return axios.get(`${url}/guest`, config);
     }
-    return {getHotel, postHotel, editHotel, deleteHotel, login}
+    const postGuest = (guestObj: any) => {
+        return axios.post(`${url}/guest`, guestObj, config);
+    }
+    const putGuest = (id: any, guestObj: any) => {
+        return axios.put(`${url}/guest/${id}`, guestObj, config);
+    }
+    const deleteGuest = (id: any) => {
+        return axios.delete(`${url}/guest/${id}`, config);
+    }
+    return {getHotel, postHotel, editHotel, deleteHotel, getGuest, postGuest, putGuest, deleteGuest}
 }
 
 export default API
