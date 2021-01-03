@@ -14,5 +14,5 @@ export interface User {
 }
 
 export interface UserState {
-    user: User;
+    users: User[];
 }

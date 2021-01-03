@@ -10,8 +10,8 @@ const AuthRoutes = () => {
     return (
         <div>
             {/* <h1>Hello, I am the AuthRoutes Component</h1> */}
-            <Route path="/addUser" component={AddUser} />
-            <Route path="/editUser" component={EditUser} />
+            <Route path="/addGuest" component={AddUser} />
+            <Route path="/editGuest/:id" component={EditUser} />
             <Route path="/addListing" component={AddListing} />
             <Route path="/editListing/:id" component={EditListing} />
             <Route path="/roomType" component={RoomTypeComponent} />

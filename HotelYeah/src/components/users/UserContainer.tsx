@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import AddUser from './AddUser'
 import API from "../util/API"
 import User from './User';
 
@@ -20,12 +19,7 @@ const UserContainer = () => {
 
     return (
         <div>
-            <h1>User Container Component</h1>
-            {users ? users.map((user: any) => (
-                <User user={user} />
-            )) : null }
-
-            <AddUser />
+            <User users={users} />
         </div>
     )
 }
