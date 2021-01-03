@@ -42,10 +42,10 @@ const API = () => {
       return axios.get(`${url}booking/${id}`, config)
     }
     const getBookingByGuest = (guestId: number) => {
-      return axios.get(`${url}booking/${guestId}`, config)
+      return axios.get(`${url}booking/guest/${guestId}`, config)
     }
     const getBookingByHotel = (hotelId: number) => {
-      return axios.get(`${url}booking/${hotelId}`, config)
+      return axios.get(`${url}booking/hotel/${hotelId}`, config)
     }
     const addBooking = (booking: any, hotelId: any, guestId: any) => {
       return axios.post(`${url}booking/${hotelId}/${guestId}`, booking, config)
