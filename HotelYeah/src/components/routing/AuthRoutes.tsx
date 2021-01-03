@@ -14,7 +14,7 @@ const AuthRoutes = () => {
             <Route path="/editUser" component={EditUser} />
             <Route path="/addListing" component={AddListing} />
             <Route path="/editListing/:id" component={EditListing} />
-            <Route path="/roomType" component={RoomTypeContainer} />
+            <Route path="/roomType" component={RoomTypeComponent} />
         </div>
     )
 }
