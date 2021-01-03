@@ -23,7 +23,7 @@ const App = () => {
           <Navbar />
           
 
-          <div style={{ minHeight: '100vh' }}>
+          <div style={{ minHeight: '80vh' }}>
             {/* Routing here for now */}
             <Routes />
             {/* If user is signed in */}

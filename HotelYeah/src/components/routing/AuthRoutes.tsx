@@ -9,12 +9,12 @@ import RoomTypeComponent from '../roomType/RoomTypeComponent'
 const AuthRoutes = () => {
     return (
         <div>
-            <h1>Hello, I am the AuthRoutes Component</h1>
+            {/* <h1>Hello, I am the AuthRoutes Component</h1> */}
             <Route path="/addUser" component={AddUser} />
             <Route path="/editUser" component={EditUser} />
             <Route path="/addListing" component={AddListing} />
-            <Route path="/editListing" component={EditListing} />
-            <Route path="/roomType" component={RoomTypeComponent} />
+            <Route path="/editListing/:id" component={EditListing} />
+            <Route path="/roomType" component={RoomTypeContainer} />
         </div>
     )
 }
