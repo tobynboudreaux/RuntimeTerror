@@ -2,7 +2,7 @@ import React from 'react'
 import { RoomTypeState } from './types'
 import { DataGrid, ColDef } from '@material-ui/data-grid';
 
-const ListingContainer = ({ roomTypeList }: RoomTypeState) => {
+const RoomTypeContainer = ({ roomTypeList }: RoomTypeState) => {
 
     const columns: ColDef[] = [
         {field: 'id', headerName: 'ID', width: 70},
@@ -11,11 +11,11 @@ const ListingContainer = ({ roomTypeList }: RoomTypeState) => {
     ]
 
     return (
-        <div className="listing-table">
+        <div className="room-type-table">
             <h1 className='center'>Room Types</h1>
             <DataGrid rows={roomTypeList} columns={columns} pageSize={10} checkboxSelection />
         </div>
     )
 }
 
-export default ListingContainer
+export default RoomTypeContainer
