@@ -111,10 +111,18 @@ const EditBooking = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(booking)
-    const res = await API().editBooking(booking, 1000);
+    console.log(bookingId.id)
+    const res = await API().editBooking(booking, bookingId.id);
     console.log(res);
   };
+
+  const handleDelete = (e: any) => {
+    e.preventDefault();
+    let confirmed = window.confirm('Are you sure you want to cancel?')
+    if(confirmed) {
+      API().deleteBooking(id)
+    }
+  }
 
   useEffect(()=> {
     getBooking();
@@ -199,7 +207,15 @@ const EditBooking = () => {
           />
         </label>
         </Typography>
-        <input type="submit" value="Update Reservation"/>
+        <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+        >Update Reservation</Button>
+
+        <Button onClick={handleDelete} variant="contained" color="secondary">
+          Cancel Reservation
+        </Button>
       </CardContent>
     </Card>
         </form>

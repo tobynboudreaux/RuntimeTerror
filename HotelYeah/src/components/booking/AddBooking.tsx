@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
 
 import API from "../util/API";
 import { Listing } from "../listings/types"
@@ -56,7 +57,7 @@ const AddBooking = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const res = await API().addBooking(booking,parseInt(listingId.hotelId),1000);
+    const res = await API().addBooking(booking, listingId.hotelId, 1000);
     console.log(res);
   };
 
@@ -68,17 +69,17 @@ const AddBooking = () => {
         <form onSubmit={handleSubmit}>
         <Card className={classes.root}>
       <CardContent>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h3" component="h2">
           New Reservation
-        </Typography>
+        </Typography> <br/>
         <Typography
           className={classes.pos}
           gutterBottom
         >
-        <label> Hotel
+        <label> Hotel <br/>
           <select name="hotelId" id="hotelId" onChange={e => setListingId({hotelId: e.currentTarget.value})}>
             {listings.map((l: Listing) => {
-              <option value={l.id}>{l.name} {l.address} l.{l.city}, {l.state} {l.zipCode}</option>
+              return <option value={l.id}> {l.name} {l.address} l.{l.city}, {l.state} {l.zipCode}</option>
             })}
           </select>
         </label>
@@ -88,7 +89,7 @@ const AddBooking = () => {
           className={classes.pos}
           gutterBottom
         >
-        <label> Check-in
+        <label> Check-in <br/>
           <input
             type="date"
             name="checkInDate"
@@ -101,7 +102,7 @@ const AddBooking = () => {
 
         </Typography>
         <Typography className={classes.pos}>
-        <label> Check-out
+        <label> Check-out <br/>
           <input
             type="date"
             name="checkOutDate"
@@ -112,8 +113,8 @@ const AddBooking = () => {
         </label>
 
         </Typography>
-        <Typography variant="body2" component="p">
-        <label> Number of Rooms
+        <Typography className={classes.pos}>
+        <label> Number of Rooms <br/>
           <input
             type="number"
             name="roomCount"
@@ -123,7 +124,12 @@ const AddBooking = () => {
           />
         </label>
         </Typography>
-        <input type="submit" value="Book it!"/>
+        <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+        >Book it!</Button>
+
       </CardContent>
     </Card>
 
