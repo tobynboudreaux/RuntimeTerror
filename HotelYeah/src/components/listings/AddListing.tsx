@@ -1,6 +1,7 @@
 import { Button, TextField } from "@material-ui/core";
 import { AddCircleRounded } from "@material-ui/icons";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import API from "../util/API";
 import "./ListingStyles.css";
 
@@ -20,12 +21,15 @@ const AddListing = () => {
     imagePath: "",
   });
 
+  const history = useHistory();
+
   const handleChange = (e: any) => {
     setListing({ ...listing, [e.target.name]: e.target.value });
   };
   const onSubmit = async () => {
     const resp = await API().postHotel(listing);
     console.log(resp);
+    history.push("/listing");
   }
 
   return (
