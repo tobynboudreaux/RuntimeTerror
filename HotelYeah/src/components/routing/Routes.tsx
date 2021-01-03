@@ -7,6 +7,9 @@ import Login from '../login/Login'
 import SignUp from '../login/SignUp'
 import UserContainer from '../users/UserContainer'
 import User from '../users/User'
+import BookingContainer from '../booking/BookingContainer'
+import AddBooking from '../booking/AddBooking'
+import EditBooking from '../booking/EditBooking'
 
 const Routes = () => {
     return (
@@ -21,6 +24,9 @@ const Routes = () => {
             <Route path="/listings" component={ListingContainer} />
             {/* need to add id to param url */}
             <Route path="/listing" component={ListingComponent} />
+            <Route path="/booking" component={BookingContainer} />
+            <Route path="/addbooking" component={AddBooking} />
+            <Route path="/editbooking/:id" component={EditBooking} />
         </>
     )
 }
