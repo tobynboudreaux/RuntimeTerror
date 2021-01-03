@@ -4,7 +4,7 @@ import AddUser from '../users/AddUser';
 import AddListing from '../listings/AddListing';
 import EditUser from '../users/EditUser';
 import EditListing from '../listings/EditListing';
-import RoomTypeContainer from '../roomType/RoomTypeContainer'
+import RoomTypeComponent from '../roomType/RoomTypeComponent'
 
 const AuthRoutes = () => {
     return (
@@ -14,7 +14,7 @@ const AuthRoutes = () => {
             <Route path="/editUser" component={EditUser} />
             <Route path="/addListing" component={AddListing} />
             <Route path="/editListing" component={EditListing} />
-            <Route path="/roomType" component={RoomTypeContainer} />
+            <Route path="/roomType" component={RoomTypeComponent} />
         </div>
     )
 }
