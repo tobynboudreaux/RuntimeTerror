@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { Redirect } from 'react-router-dom'
+
 import { makeStyles } from "@material-ui/core/styles";
 import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
@@ -9,6 +11,7 @@ import Button from "@material-ui/core/Button";
 
 import API from "../util/API";
 import { Listing } from "../listings/types"
+import { Guest } from "./types"
 
 const useStyles = makeStyles({
   table: {
@@ -31,15 +34,32 @@ const useStyles = makeStyles({
 });
 
 const AddBooking = () => {
+
+  const [redirect, setRedirect] = useState({
+    value: false
+  })
+
   const [listings, setListings] = useState([]);
+
+  const [guests, setGuests] = useState([]);
 
   const [listingId, setListingId] = useState({
     hotelId: ""
   });
 
+  const [guest, setGuest] = useState({
+    id: ""
+  });
+
   const getListings = async () => {
     const res = await API().getHotel();
     setListings(res.data.content);
+    console.log(res.data.content)
+  }
+
+  const getGuests = async () => {
+    const res = await API().getGuest();
+    setGuests(res.data.content);
     console.log(res.data.content)
   }
 
@@ -57,13 +77,22 @@ const AddBooking = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const res = await API().addBooking(booking, listingId.hotelId, 1000);
+    const res = await API().addBooking(booking, listingId.hotelId, guest.id);
+    setRedirect({
+      value: true
+    })
     console.log(res);
   };
 
   useEffect(()=> {
     getListings();
+    getGuests();
   }, []);
+
+  if(redirect.value) {
+    console.log(redirect)
+    return <Redirect to="/booking" />
+  }
     return (
       <Container>
         <form onSubmit={handleSubmit}>
@@ -72,6 +101,19 @@ const AddBooking = () => {
         <Typography variant="h3" component="h2">
           New Reservation
         </Typography> <br/>
+        <Typography
+          className={classes.pos}
+          gutterBottom
+        >
+        <label> Guest <br/>
+          <select name="guestId" id="guestId" onChange={e => setGuest({id: e.currentTarget.value})}>
+            {guests.map((g: Guest ) => {
+              return <option value={g.id}> {g.id} {g.firstName} {g.lastName} </option>
+            })}
+          </select>
+        </label>
+
+        </Typography>
         <Typography
           className={classes.pos}
           gutterBottom
