@@ -10,7 +10,7 @@ export const config = {
 
 const API = () => {
     const url = consts.BASE_URL
-    
+
     const getHotel = () => {
         return axios.get(`${url}hotel`, config);
     }
@@ -35,7 +35,19 @@ const API = () => {
     const deleteGuest = (id: any) => {
         return axios.delete(`${url}/guest/${id}`, config);
     }
-    return {getHotel, postHotel, editHotel, deleteHotel, getGuest, postGuest, putGuest, deleteGuest}
+    const getBooking = () => {
+      return axios.get(`${url}booking`, config)
+    }
+    const getBookingById = (id: number) => {
+      return axios.get(`${url}booking/${id}`, config)
+    }
+    const addBooking = (booking: any, hotelId: number, guestId: number) => {
+      return axios.post(`${url}booking/${hotelId}/${guestId}`, booking, config)
+    }
+    const editBooking = (booking: any, id: number) => {
+      return axios.put(`${url}booking/${id}`, booking, config)
+    }
+    return {getHotel, postHotel, editHotel, deleteHotel, getGuest, postGuest, putGuest, deleteGuest, getBooking, addBooking, getBookingById, editBooking}
 }
 
 export default API
