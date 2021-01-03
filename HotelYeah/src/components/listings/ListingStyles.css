@@ -29,3 +29,7 @@
 .buttons-below-table button {
   margin-right: 20px;
 }
+
+.hidden {
+  display: none;
+}
