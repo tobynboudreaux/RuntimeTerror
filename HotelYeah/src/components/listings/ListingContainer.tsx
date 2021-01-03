@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListingState } from "./types";
 import { DataGrid, ColDef } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
+import API from "../util/API";
+import { useHistory } from "react-router-dom";
 
 const ListingContainer = ({ listings }: ListingState) => {
-
-  //add state for selected listing
-  //on button clicks, edit/delete listing by ID
-  
   const columns: ColDef[] = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "code", headerName: "Code", width: 110 },
@@ -34,15 +32,61 @@ const ListingContainer = ({ listings }: ListingState) => {
     // },
   ];
 
+  const [selection, setSelection] = useState({
+    id: -1,
+  });
+
+  const history = useHistory();
+
+  const handleSelection = (e: any) => {
+    setSelection({ ...selection, id: e.rowIds[0] });
+  };
+
+  const handleRemoveClick = async () => {
+    if (selection.id === -1) {
+      return alert("Click on a listing row before attempting to remove!");
+    }
+    const answer = window.confirm(
+      `You're about to delete the listing of id ${selection.id}. Continue?`
+    );
+    if (!answer) return;
+    const resp = await API().deleteHotel(selection.id);
+    console.log(resp);
+    window.location.reload();
+  };
+
+  const handleEditClick = () => {
+    if (selection.id === -1) {
+      return alert("Click on a listing row before attempting to edit!");
+    }
+    history.push(`/editListing/${selection.id}`);
+  };
+
+  const handleAddClick = () => {
+    history.push(`/addListing`);
+  }
+
   return (
     <>
       <div className="listing-table">
         <h1 className="center">Hotel Listings</h1>
-        <DataGrid rows={listings} columns={columns} pageSize={8} />
+        <DataGrid
+          rows={listings}
+          columns={columns}
+          pageSize={8}
+          onSelectionChange={(e) => handleSelection(e)}
+        />
       </div>
       <div className="buttons-below-table">
-        <Button variant="contained" color="primary">Edit Listing</Button>
-        <Button variant="contained" color="primary">Remove Listing</Button>
+        <Button variant="contained" color="primary" onClick={handleAddClick}>
+          Add Listing
+        </Button>
+        <Button variant="contained" color="primary" onClick={handleEditClick}>
+          Edit Listing
+        </Button>
+        <Button variant="contained" color="primary" onClick={handleRemoveClick}>
+          Remove Listing
+        </Button>
       </div>
     </>
   );

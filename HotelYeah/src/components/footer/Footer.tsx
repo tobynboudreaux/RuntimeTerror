@@ -55,7 +55,7 @@ const Footer = () => {
         <div>
 
             <div className={classes.header}>
-                <Grid container spacing={0} xs={12}>
+                <Grid container spacing={0}>
                     <Grid item xs={3}>
                         <Paper elevation={0} className={classes.paperWhite}> <img src={Tripadvisor} alt='Tripadvisor' style={{ width: 70 }} /></Paper>
                     </Grid>
