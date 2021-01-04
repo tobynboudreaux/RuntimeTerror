@@ -14,6 +14,7 @@ import { Listing } from "../listings/types"
 import { Guest } from "./types"
 
 const useStyles = makeStyles({
+
   table: {
     minWidth: 650,
   },
@@ -34,6 +35,9 @@ const useStyles = makeStyles({
 });
 
 const AddBooking = () => {
+  const todayDate = new Date().toISOString();
+  const today = todayDate.slice(0,todayDate.indexOf("T"));
+console.log(today)
 
   const [redirect, setRedirect] = useState({
     value: false
@@ -77,6 +81,7 @@ const AddBooking = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    console.log(guest.id)
     const res = await API().addBooking(booking, listingId.hotelId, guest.id);
     setRedirect({
       value: true
@@ -107,6 +112,7 @@ const AddBooking = () => {
         >
         <label> Guest <br/>
           <select name="guestId" id="guestId" onChange={e => setGuest({id: e.currentTarget.value})}>
+            <option> select guest </option>
             {guests.map((g: Guest ) => {
               return <option value={g.id}> {g.id} {g.firstName} {g.lastName} </option>
             })}
@@ -120,6 +126,7 @@ const AddBooking = () => {
         >
         <label> Hotel <br/>
           <select name="hotelId" id="hotelId" onChange={e => setListingId({hotelId: e.currentTarget.value})}>
+            <option> select hotel </option>
             {listings.map((l: Listing) => {
               return <option value={l.id}> {l.name} {l.address} l.{l.city}, {l.state} {l.zipCode}</option>
             })}
@@ -127,15 +134,13 @@ const AddBooking = () => {
         </label>
 
         </Typography>
-        <Typography
-          className={classes.pos}
-          gutterBottom
-        >
+        <Typography className={classes.pos}>
         <label> Check-in <br/>
           <input
             type="date"
             name="checkInDate"
             placeholder="check-in"
+            min={today}
             value={booking.checkInDate}
             onChange={handleChange}
             required
@@ -148,6 +153,7 @@ const AddBooking = () => {
           <input
             type="date"
             name="checkOutDate"
+            min={today}
             value={booking.checkOutDate}
             onChange={handleChange}
             required
@@ -159,6 +165,8 @@ const AddBooking = () => {
         <label> Number of Rooms <br/>
           <input
             type="number"
+            min="1"
+            max="10"
             name="roomCount"
             value={booking.roomCount}
             onChange={handleChange}
