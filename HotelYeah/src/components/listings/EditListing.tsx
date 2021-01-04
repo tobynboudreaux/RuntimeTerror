@@ -55,7 +55,7 @@ const EditListing = () => {
   }, [id]);
 
   return (
-    <form className="add-listing-form" noValidate autoComplete="off">
+    <form className="edit-listing-form" noValidate autoComplete="off">
       <label>
           <EditLocation></EditLocation>
         <h2>

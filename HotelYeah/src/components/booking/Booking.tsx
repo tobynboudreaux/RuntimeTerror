@@ -1,6 +1,6 @@
 import React from 'react'
 import { BookingItem } from './types';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -40,6 +40,11 @@ const useStyles = makeStyles({
 });
 
 const Booking: React.FC<BookingProps> = ({ booking }) => {
+
+  const formatDate = (dateString: any) => {
+    return dateString.slice(0,dateString.indexOf("T"))
+  }
+
   const classes = useStyles();
 
     return (
@@ -62,15 +67,14 @@ const Booking: React.FC<BookingProps> = ({ booking }) => {
               <StyledTableCell component="th" scope="row">{booking.id}</StyledTableCell>
               <StyledTableCell align="right"><Link to={`/editbooking/${booking.id}`} > Edit </Link></StyledTableCell>
               <StyledTableCell align="right">{booking.guest.firstName} {booking.guest.lastName}</StyledTableCell>
-              <StyledTableCell align="right">{booking.checkInDate}</StyledTableCell>
-              <StyledTableCell align="right">{booking.checkOutDate}</StyledTableCell>
+              <StyledTableCell align="right">{formatDate(booking.checkInDate)}</StyledTableCell>
+              <StyledTableCell align="right">{formatDate(booking.checkOutDate)}</StyledTableCell>
               <StyledTableCell align="right">{booking.hotel.name}</StyledTableCell>
               <StyledTableCell align="right">{booking.hotel.address} {booking.hotel.city}, {booking.hotel.state} {booking.hotel.zipCode}</StyledTableCell>
             </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>
-
       </>
     )
 }
