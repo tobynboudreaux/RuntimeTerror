@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import API from '../util/API';
-import { useParams } from 'react-router-dom'
+
+import { useParams, Redirect } from 'react-router-dom'
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -37,13 +38,19 @@ const useStyles = makeStyles({
 });
 
 const EditBooking = () => {
+
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+
   const { id } = useParams();
 
   const [bookingId] = useState({
     id: id
   });
+
+  const [redirect, setRedirect] = useState({
+    value: false
+  })
+
   const [booking, setBooking] = useState({
     checkInDate: "",
     checkOutDate: "",
@@ -109,17 +116,30 @@ const EditBooking = () => {
     setBooking({ ...booking, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    console.log(booking)
-    const res = await API().editBooking(booking, 1000);
-    console.log(res);
+  const handleSubmit = async () => {
+    await API().editBooking(booking, bookingId.id);
   };
+
+  const handleDelete = async (e: any) => {
+    e.preventDefault();
+    let confirmed = window.confirm('Are you sure you want to cancel?')
+    if(confirmed) {
+      await API().deleteBooking(id)
+      setRedirect({
+        value: true
+      })
+    }
+  }
 
   useEffect(()=> {
     getBooking();
   }, []);
 
+
+  if(redirect.value) {
+    console.log(redirect)
+    return <Redirect to="/booking" />
+  }
     return (
       <Container >
         <h1>Booking Information</h1>
@@ -131,6 +151,7 @@ const EditBooking = () => {
             <TableCell align="right">Guest</TableCell>
             <TableCell align="right">Chek-in</TableCell>
             <TableCell align="right">Check-out</TableCell>
+            <TableCell align="right">Number of Rooms</TableCell>
             <TableCell align="right">Hotel Name</TableCell>
             <TableCell align="right">Hotel Address</TableCell>
           </TableRow>
@@ -142,6 +163,7 @@ const EditBooking = () => {
               <TableCell align="right">{guest.firstName} {guest.lastName}</TableCell>
               <TableCell align="right">{booking.checkInDate}</TableCell>
               <TableCell align="right">{booking.checkOutDate}</TableCell>
+              <TableCell align="right">{booking.roomCount}</TableCell>
               <TableCell align="right">{hotel.name}</TableCell>
               <TableCell align="right">{hotel.address} {hotel.city}, {hotel.state} {hotel.zipCode}</TableCell>
             </TableRow>
@@ -199,7 +221,15 @@ const EditBooking = () => {
           />
         </label>
         </Typography>
-        <input type="submit" value="Update Reservation"/>
+        <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+        >Update Reservation</Button>
+
+        <Button onClick={handleDelete} variant="contained" color="secondary">
+          Cancel Reservation
+        </Button>
       </CardContent>
     </Card>
         </form>

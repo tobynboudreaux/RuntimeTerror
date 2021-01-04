@@ -24,7 +24,7 @@ const API = () => {
         return axios.delete(`${url}hotel/${id}`, config);
     }
     const getGuest = () => {
-        return axios.get(`${url}/guest`, config);
+        return axios.get(`${url}guest/`, config);
     }
     const postGuest = (guestObj: any) => {
         return axios.post(`${url}/guest`, guestObj, config);
@@ -41,13 +41,22 @@ const API = () => {
     const getBookingById = (id: number) => {
       return axios.get(`${url}booking/${id}`, config)
     }
-    const addBooking = (booking: any, hotelId: number, guestId: number) => {
+    const getBookingByGuest = (guestId: number) => {
+      return axios.get(`${url}booking/guest/${guestId}`, config)
+    }
+    const getBookingByHotel = (hotelId: number) => {
+      return axios.get(`${url}booking/hotel/${hotelId}`, config)
+    }
+    const addBooking = (booking: any, hotelId: any, guestId: any) => {
       return axios.post(`${url}booking/${hotelId}/${guestId}`, booking, config)
     }
     const editBooking = (booking: any, id: number) => {
       return axios.put(`${url}booking/${id}`, booking, config)
     }
-    return {getHotel, postHotel, editHotel, deleteHotel, getGuest, postGuest, putGuest, deleteGuest, getBooking, addBooking, getBookingById, editBooking}
+    const deleteBooking = (id: any) => {
+      return axios.delete(`${url}booking/${id}`, config)
+    }
+    return {getHotel, postHotel, editHotel, deleteHotel, getGuest, postGuest, putGuest, deleteGuest, getBooking, addBooking, getBookingById, editBooking, deleteBooking, getBookingByGuest, getBookingByHotel}
 }
 
 export default API
